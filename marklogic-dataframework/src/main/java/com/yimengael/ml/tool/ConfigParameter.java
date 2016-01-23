@@ -19,14 +19,11 @@ public class ConfigParameter {
 	protected static String admin_password = props.getProperty("marklogic.db.admin_password");
 	protected static Authentication authType = Authentication
 			.valueOf(props.getProperty("marklogic.db.authentication_type").toUpperCase());
+	public static String root_path = props.getProperty("marklogic.root.path");
+	public static String work_dept_path = props.getProperty("marklogic.workdept.path");
+	public static String staff_info_path = props.getProperty("marklogic.staffinformation.path");
 	
-	
-	//private static ConfigParameter configParameter = new ConfigParameter();
-	
-	
-	/*public static ConfigParameter getInstance() {
-		return configParameter;
-	}*/
+
 	
 	// get the configuration
 	private static Properties loadProperties() {

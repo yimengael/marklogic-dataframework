@@ -7,7 +7,7 @@ import com.yimengael.ml.model.WorkDepartment;
  *
  * @version 1.0
  * @see
- * @author Gal Yimen
+ * @author Gael Yimen
  */
 public interface IWorkDepartmentService {
 

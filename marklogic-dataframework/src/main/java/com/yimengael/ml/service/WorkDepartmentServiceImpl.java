@@ -5,8 +5,6 @@ import com.yimengael.ml.model.WorkDepartment;
 public class WorkDepartmentServiceImpl implements IWorkDepartmentService {
 
 	public void addWorkDepartment(WorkDepartment vWorkDepartment) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
