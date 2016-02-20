@@ -1,11 +1,10 @@
 package com.yimengael.ml.dao;
 
-import java.util.List;
-
-import com.yimengael.ml.model.WorkDepartment;
+import com.yimengael.ml.exceptions.TechnicalException;
+import com.yimengael.ml.model.WorkDepartmentVO;
 
 /**
- * IWorkDepartmentDao - Interface Individual Contact.
+ * IWorkDepartmentDao - Interface Work Department DAO.
  *
  * @version 1.0
  * @see
@@ -13,13 +12,7 @@ import com.yimengael.ml.model.WorkDepartment;
  */
 public interface IWorkDepartmentDao {
 
-	public void addWorkDepartment(WorkDepartment vWorkDepartment);
+	public String addWorkDepartment(WorkDepartmentVO pWorkDepartment) throws TechnicalException;
 
-	public WorkDepartment findWorkDepartmentById(String id);
-
-	public WorkDepartment removeWorkDepartment(String id);
-
-	public List<WorkDepartment> findAllWorkDepartment();
-
-	public String displayWorkDepartment();
+	public WorkDepartmentVO findWorkDepartmentById(String pDepartmentID) throws TechnicalException;
 }

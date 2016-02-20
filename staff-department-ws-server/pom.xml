@@ -157,6 +157,11 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+    	<groupId>com.yimengael</groupId>
+    	<artifactId>marklogic-dataframework</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>

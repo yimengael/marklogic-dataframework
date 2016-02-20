@@ -2,21 +2,47 @@ package com.yimengael.ml.model;
 
 import java.util.Objects;
 
-public class StaffInformation {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-	private Long staffId;
+@XStreamAlias("staffinformation")
+public class StaffInformationVO extends MarkLogicVO {
+
+	@XStreamAlias("staffId")
+	private String staffId;
+	
+	@XStreamAlias("staffSsn")
 	private String staffSsn;
+	
+	@XStreamAlias("staffFirstName")
 	private String staffFirstName;
+	
+	@XStreamAlias("staffLastName")
 	private String staffLastName;
+	
+	@XStreamAlias("staffHireDate")
 	private String staffHireDate;
-	private Long staffManager;
-	private WorkDepartment staffDepartement = new WorkDepartment();
+	
+	@XStreamAlias("staffManager")
+	private String staffManager;
+	
+	@XStreamAlias("staffDepartement")
+	private WorkDepartmentVO staffDepartement = new WorkDepartmentVO();
 
-	public StaffInformation() {
+	public StaffInformationVO() {
 	}
 
-	public StaffInformation(Long staffId, String staffSsn, String staffFirstName, String staffLastName,
-			String staffHireDate, Long staffManager, WorkDepartment staffDepartement) {
+	/**
+	 * 
+	 * @param staffId
+	 * @param staffSsn
+	 * @param staffFirstName
+	 * @param staffLastName
+	 * @param staffHireDate
+	 * @param staffManager
+	 * @param staffDepartement
+	 */
+	public StaffInformationVO(String staffId, String staffSsn, String staffFirstName, String staffLastName,
+			String staffHireDate, String staffManager, WorkDepartmentVO staffDepartement) {
 		super();
 		this.staffId = staffId;
 		this.staffSsn = staffSsn;
@@ -27,18 +53,34 @@ public class StaffInformation {
 		this.staffDepartement = staffDepartement;
 	}
 
-	public Long getStaffId() {
+	/**
+	 * 
+	 * @return
+	 */
+	public String getStaffId() {
 		return staffId;
 	}
 
-	public void setStaffId(Long staffId) {
+	/**
+	 * 
+	 * @param staffId
+	 */
+	public void setStaffId(String staffId) {
 		this.staffId = staffId;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getStaffSsn() {
 		return staffSsn;
 	}
 
+	/**
+	 * 
+	 * @param staffSsn
+	 */
 	public void setStaffSsn(String staffSsn) {
 		this.staffSsn = staffSsn;
 	}
@@ -67,19 +109,19 @@ public class StaffInformation {
 		this.staffHireDate = staffHireDate;
 	}
 
-	public Long getStaffManager() {
+	public String getStaffManager() {
 		return staffManager;
 	}
 
-	public void setStaffManager(Long staffManager) {
+	public void setStaffManager(String staffManager) {
 		this.staffManager = staffManager;
 	}
 
-	public WorkDepartment getStaffDepartement() {
+	public WorkDepartmentVO getStaffDepartement() {
 		return staffDepartement;
 	}
 
-	public void setStaffDepartement(WorkDepartment staffDepartement) {
+	public void setStaffDepartement(WorkDepartmentVO staffDepartement) {
 		this.staffDepartement = staffDepartement;
 	}
 
@@ -91,7 +133,7 @@ public class StaffInformation {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		StaffInformation staffInformation = (StaffInformation) o;
+		StaffInformationVO staffInformation = (StaffInformationVO) o;
 		return Objects.equals(staffId, staffInformation.staffId) && Objects.equals(staffSsn, staffInformation.staffSsn)
 				&& Objects.equals(staffFirstName, staffInformation.staffFirstName)
 				&& Objects.equals(staffLastName, staffInformation.staffLastName)

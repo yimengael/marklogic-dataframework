@@ -2,25 +2,31 @@ package com.yimengael.ml.model;
 
 import java.util.Objects;
 
-public class WorkDepartment {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-	private Long departmentId;
+@XStreamAlias("workdepartment")
+public class WorkDepartmentVO extends MarkLogicVO {
+
+	@XStreamAlias("departmentId")
+	private String departmentId;
+	
+	@XStreamAlias("departmentName")
 	private String departmentName;
 
-	public WorkDepartment(Long departmentId, String departmentName) {
+	public WorkDepartmentVO(String departmentId, String departmentName) {
 		super();
 		this.departmentId = departmentId;
 		this.departmentName = departmentName;
 	}
 
-	public WorkDepartment() {
+	public WorkDepartmentVO() {
 	}
 
-	public Long getDepartmentId() {
+	public String getDepartmentId() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(Long departmentId) {
+	public void setDepartmentId(String departmentId) {
 		this.departmentId = departmentId;
 	}
 
@@ -40,7 +46,7 @@ public class WorkDepartment {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		WorkDepartment workDepartment = (WorkDepartment) o;
+		WorkDepartmentVO workDepartment = (WorkDepartmentVO) o;
 		return Objects.equals(departmentId, workDepartment.departmentId)
 				&& Objects.equals(departmentName, workDepartment.departmentName);
 	}

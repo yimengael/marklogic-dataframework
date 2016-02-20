@@ -1,60 +1,35 @@
 package com.yimengael.ml.dao;
 
-import java.util.List;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.marklogic.client.document.DocumentWriteSet;
-import com.marklogic.client.document.JSONDocumentManager;
-import com.marklogic.client.io.Format;
-import com.marklogic.client.io.StringHandle;
-import com.yimengael.ml.model.WorkDepartment;
-import com.yimengael.ml.tool.ConfigParameter;
-import com.yimengael.ml.tool.MLDataSource;
+import com.yimengael.ml.exceptions.TechnicalException;
+import com.yimengael.ml.model.WorkDepartmentVO;
+import com.yimengael.ml.tools.Constants;
 
 public class WorkDepartmentDaoImpl implements IWorkDepartmentDao {
 
-	public void addWorkDepartment(WorkDepartment vWorkDepartment) {
+	private IMarkLogicDao vMarkLogicDao = new MarkLogicDaoImpl();
+
+	/**
+	 * @param pWorkDepartmentVO
+	 */
+	@Override
+	public String addWorkDepartment(WorkDepartmentVO pWorkDepartmentVO) throws TechnicalException {
 		
-		//Logger d'entree
-		
-		JSONDocumentManager jsonDocMgr = MLDataSource.getConnection().newJSONDocumentManager();
-		DocumentWriteSet jsonBatch = jsonDocMgr.newWriteSet();
-		
-		String jsonStrWorkDept = new String("");
-		ObjectMapper objMapper = new ObjectMapper();
-		try {
-			jsonStrWorkDept = objMapper.writeValueAsString(vWorkDepartment);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		
-		StringHandle strHandle = new StringHandle(jsonStrWorkDept).withFormat(Format.JSON);
-		jsonBatch.add(ConfigParameter.root_path+ConfigParameter.work_dept_path+ vWorkDepartment.getDepartmentName() +".json", strHandle);
-		jsonDocMgr.write(jsonBatch);
-		
-		//Logger de sortie
-		
+		pWorkDepartmentVO.setDocumentURI(Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pWorkDepartmentVO.getDepartmentId());
+		return vMarkLogicDao.write(pWorkDepartmentVO, Constants.WORK_DEPARTMENT_COLLECTION);
 	}
 
-	public WorkDepartment findWorkDepartmentById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public WorkDepartment removeWorkDepartment(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<WorkDepartment> findAllWorkDepartment() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String displayWorkDepartment() {
-		// TODO Auto-generated method stub
-		return null;
+	/**
+	 * @param pDepartmentID
+	 */
+	@Override
+	public WorkDepartmentVO findWorkDepartmentById(String pDepartmentID) throws TechnicalException {
+		
+		String vDocumentURI = Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pDepartmentID;
+		
+		WorkDepartmentVO vWorkDepartmentVO = (WorkDepartmentVO) vMarkLogicDao.getDocumentByURI(vDocumentURI, Constants.WORK_DEPARTMENT_COLLECTION);
+		vWorkDepartmentVO.setDocumentURI(vDocumentURI);
+		
+		return vWorkDepartmentVO;
 	}
 
 }

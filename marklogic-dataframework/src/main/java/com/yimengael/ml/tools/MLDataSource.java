@@ -1,4 +1,4 @@
-package com.yimengael.ml.tool;
+package com.yimengael.ml.tools;
 
 import com.marklogic.client.DatabaseClient;
 

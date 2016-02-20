@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.JaxRSServerCodegen", date = "2016-01-17T17:09:25.913Z")
 public class WorkDepartment   {
   
-  private Long departmentId = null;
+  private String departmentId = null;
   private String departmentName = null;
 
   
@@ -22,10 +22,10 @@ public class WorkDepartment   {
   
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("department_id")
-  public Long getDepartmentId() {
+  public String getDepartmentId() {
     return departmentId;
   }
-  public void setDepartmentId(Long departmentId) {
+  public void setDepartmentId(String departmentId) {
     this.departmentId = departmentId;
   }
 

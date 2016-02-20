@@ -1,9 +1,10 @@
 package com.yimengael.ml.service;
 
-import com.yimengael.ml.model.WorkDepartment;
+import com.yimengael.ml.exceptions.TechnicalException;
+import com.yimengael.ml.model.WorkDepartmentVO;
 
 /**
- * IWorkDepartmentService - Interface Individual Contact Service.
+ * IWorkDepartmentService - Interface Work Department Service.
  *
  * @version 1.0
  * @see
@@ -11,6 +12,7 @@ import com.yimengael.ml.model.WorkDepartment;
  */
 public interface IWorkDepartmentService {
 
-	public void addWorkDepartment(WorkDepartment vWorkDepartment);
+	public String addWorkDepartment(WorkDepartmentVO pWorkDepartmentVO) throws TechnicalException;
+	public WorkDepartmentVO getWorkDepartment(String pDepartmentId) throws TechnicalException;
 
 }
