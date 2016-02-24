@@ -14,7 +14,6 @@ import com.yimengael.ml.tools.Constants;
 
 public class StaffInformationServiceImpl implements IStaffInformationService {
 	
-	private static final Logger LOGGER = Logger.getLogger(StaffInformationServiceImpl.class);
 	final IStaffInformationDao mStaffInformationDao = new StaffInformationDaoImpl();
 
 	@Override

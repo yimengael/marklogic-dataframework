@@ -15,7 +15,6 @@ import com.yimengael.ml.tools.Utils;
 
 public class WorkDepartmentServiceImpl implements IWorkDepartmentService {
 
-	private static final Logger LOGGER = Logger.getLogger(WorkDepartmentServiceImpl.class);
 	final IWorkDepartmentDao mWorkDepartmentDao = new WorkDepartmentDaoImpl();
 
 	/**
