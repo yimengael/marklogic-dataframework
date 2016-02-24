@@ -14,7 +14,7 @@ public class WorkDepartmentDaoImpl implements IWorkDepartmentDao {
 	@Override
 	public String addWorkDepartment(WorkDepartmentVO pWorkDepartmentVO) throws TechnicalException {
 		
-		pWorkDepartmentVO.setDocumentURI(Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pWorkDepartmentVO.getDepartmentId());
+		//pWorkDepartmentVO.setDocumentURI(Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pWorkDepartmentVO.getDepartmentId());
 		return vMarkLogicDao.write(pWorkDepartmentVO, Constants.WORK_DEPARTMENT_COLLECTION);
 	}
 

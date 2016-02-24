@@ -12,9 +12,9 @@ public class StaffInformationDaoImpl implements IStaffInformationDao {
 	 * @param pStaffInformationVO
 	 */
 	@Override
-	public String addWorkDepartment(StaffInformationVO pStaffInformationVO) throws TechnicalException {
+	public String addStaffInformation(StaffInformationVO pStaffInformationVO) throws TechnicalException {
 		
-		pStaffInformationVO.setDocumentURI(Constants.STAFF_INFORMATION_COLLECTION_FILES_URI_PREFIX + Constants.STAFF_INFORMATION_FILE_PREFIX_NAME + "_" + pStaffInformationVO.getStaffId());
+		//pStaffInformationVO.setDocumentURI(Constants.STAFF_INFORMATION_COLLECTION_FILES_URI_PREFIX + Constants.STAFF_INFORMATION_FILE_PREFIX_NAME + "_" + pStaffInformationVO.getStaffId());
 		return vMarkLogicDao.write(pStaffInformationVO, Constants.STAFF_INFORMATION_COLLECTION);
 	}
 
@@ -22,7 +22,7 @@ public class StaffInformationDaoImpl implements IStaffInformationDao {
 	 * @param pStaffID
 	 */
 	@Override
-	public StaffInformationVO findWorkDepartmentById(String pStaffID) throws TechnicalException {
+	public StaffInformationVO findStaffInformationById(String pStaffID) throws TechnicalException {
 		// TODO Auto-generated method stub
 		String vDocumentURI = Constants.STAFF_INFORMATION_COLLECTION_FILES_URI_PREFIX + Constants.STAFF_INFORMATION_FILE_PREFIX_NAME + "_" + pStaffID;
 		

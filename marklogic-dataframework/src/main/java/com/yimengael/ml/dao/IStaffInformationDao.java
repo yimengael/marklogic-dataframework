@@ -5,7 +5,7 @@ import com.yimengael.ml.model.StaffInformationVO;
 
 public interface IStaffInformationDao {
 
-	public String addWorkDepartment(StaffInformationVO pStaffInformation) throws TechnicalException;
+	public String addStaffInformation(StaffInformationVO pStaffInformation) throws TechnicalException;
 
-	public StaffInformationVO findWorkDepartmentById(String pStaffID) throws TechnicalException;
+	public StaffInformationVO findStaffInformationById(String pStaffID) throws TechnicalException;
 }

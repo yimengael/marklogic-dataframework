@@ -26,7 +26,7 @@ public class StaffInformationVO extends MarkLogicVO {
 	private String staffManager;
 	
 	@XStreamAlias("staffDepartement")
-	private WorkDepartmentVO staffDepartement = new WorkDepartmentVO();
+	private String staffDepartement;
 
 	public StaffInformationVO() {
 	}
@@ -42,7 +42,7 @@ public class StaffInformationVO extends MarkLogicVO {
 	 * @param staffDepartement
 	 */
 	public StaffInformationVO(String staffId, String staffSsn, String staffFirstName, String staffLastName,
-			String staffHireDate, String staffManager, WorkDepartmentVO staffDepartement) {
+			String staffHireDate, String staffManager, String staffDepartement) {
 		super();
 		this.staffId = staffId;
 		this.staffSsn = staffSsn;
@@ -117,11 +117,11 @@ public class StaffInformationVO extends MarkLogicVO {
 		this.staffManager = staffManager;
 	}
 
-	public WorkDepartmentVO getStaffDepartement() {
+	public String getStaffDepartement() {
 		return staffDepartement;
 	}
 
-	public void setStaffDepartement(WorkDepartmentVO staffDepartement) {
+	public void setStaffDepartement(String staffDepartement) {
 		this.staffDepartement = staffDepartement;
 	}
 
