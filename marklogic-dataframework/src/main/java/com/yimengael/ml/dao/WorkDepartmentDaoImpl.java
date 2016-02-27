@@ -28,10 +28,10 @@ public class WorkDepartmentDaoImpl implements IWorkDepartmentDao {
 		
 		LOGGER.debug("Start getting WorkDepartment using WorkDepartmentDaoImpl : " + pDepartmentID);
 		
-		String vDocumentURI = Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pDepartmentID;
+		//String vDocumentURI = Constants.WORK_DEPARTMENT_FILES_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pDepartmentID;
 		
-		WorkDepartmentVO vWorkDepartmentVO = (WorkDepartmentVO) vMarkLogicDao.getDocumentByURI(vDocumentURI, Constants.WORK_DEPARTMENT_COLLECTION);
-		vWorkDepartmentVO.setDocumentURI(vDocumentURI);
+		WorkDepartmentVO vWorkDepartmentVO = (WorkDepartmentVO) vMarkLogicDao.getDocumentByURI(pDepartmentID, Constants.WORK_DEPARTMENT_COLLECTION);
+		vWorkDepartmentVO.setDocumentURI(pDepartmentID);
 		
 		return vWorkDepartmentVO;
 	}

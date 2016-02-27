@@ -21,8 +21,8 @@ public class WorkDepartmentServiceImpl implements IWorkDepartmentService {
 	public String addWorkDepartment(WorkDepartmentVO pWorkDepartmentVO) throws TechnicalException {
 
 		// Set Work Department document properties
-		pWorkDepartmentVO.setDocumentURI(Constants.WORK_DEPARTMENT_URI_PREFIX
-				+ Constants.WORK_DEPARTMENT_FILES_URI_PREFIX + "_" + pWorkDepartmentVO.getDepartmentId());
+		pWorkDepartmentVO.setDocumentURI(Constants.WORK_DEPARTMENT_FILES_URI_PREFIX
+				+ Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pWorkDepartmentVO.getDepartmentId());
 		pWorkDepartmentVO.setTriples(new TriplesVO());
 
 		List<TripleVO> tripleVOList = pWorkDepartmentVO.getTriples().getListOfTriples();
@@ -39,8 +39,7 @@ public class WorkDepartmentServiceImpl implements IWorkDepartmentService {
 	 */
 	@Override
 	public WorkDepartmentVO getWorkDepartment(String pDepartmentId) throws TechnicalException {
-		String vWorkDeptDocumentURI = Constants.WORK_DEPARTMENT_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_"
-				+ pDepartmentId;
+		String vWorkDeptDocumentURI = Constants.WORK_DEPARTMENT_FILES_URI_PREFIX + Constants.WORK_DEPARTMENT_FILE_PREFIX_NAME + "_" + pDepartmentId;
 		WorkDepartmentVO vWorkDepartmentVO = mWorkDepartmentDao.findWorkDepartmentById(vWorkDeptDocumentURI);
 		return vWorkDepartmentVO;
 	}

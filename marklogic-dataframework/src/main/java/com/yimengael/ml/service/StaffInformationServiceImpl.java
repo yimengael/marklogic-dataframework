@@ -26,11 +26,12 @@ public class StaffInformationServiceImpl implements IStaffInformationService {
 		//Set triples for staff information
 		List<TripleVO> tripleVOList = pStaffInformationVO.getTriples().getListOfTriples();
 		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffId()));
-		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffLastName()));
-		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffFirstName()));
-		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffHireDate()));
 		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffSsn()));
+		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffFirstName()));
+		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffLastName()));
+		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffHireDate()));
 		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffManager()));
+		tripleVOList.add(new TripleVO(pStaffInformationVO.getDocumentURI(), Constants.STAFF_INFORMATION_PREDICATE, pStaffInformationVO.getStaffDepartement()));
 		
 		//Set triples for staff and his head
 		String vStaffManagerDocumentURI = Constants.STAFF_INFORMATION_COLLECTION_URI_PREFIX + Constants.STAFF_INFORMATION_COLLECTION_FILES_URI_PREFIX + "_" + pStaffInformationVO.getStaffManager();
@@ -46,9 +47,9 @@ public class StaffInformationServiceImpl implements IStaffInformationService {
 
 	@Override
 	public StaffInformationVO getStaffInformation(String pStaffID) throws TechnicalException {
-		String vStaffInfoDocumentURI = Constants.STAFF_INFORMATION_COLLECTION_URI_PREFIX + Constants.STAFF_INFORMATION_FILE_PREFIX_NAME + "_"
-				+ pStaffID;
-		StaffInformationVO vStaffInformationVO = mStaffInformationDao.findStaffInformationById(vStaffInfoDocumentURI);
+//		String vStaffInfoDocumentURI = Constants.STAFF_INFORMATION_COLLECTION_URI_PREFIX + Constants.STAFF_INFORMATION_FILE_PREFIX_NAME + "_"
+//				+ pStaffID;
+		StaffInformationVO vStaffInformationVO = mStaffInformationDao.findStaffInformationById(pStaffID);
 		return vStaffInformationVO;
 	}
 

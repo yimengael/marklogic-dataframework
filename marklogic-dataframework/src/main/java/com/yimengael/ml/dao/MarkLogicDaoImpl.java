@@ -75,8 +75,9 @@ public class MarkLogicDaoImpl implements IMarkLogicDao {
 				vCollections = vMetadataHandle.getCollections();
 				vCollections.addAll(pCollection);
 
-				vXmlDocMgr.write(pMarkLogicVO.getDocumentURI(), vMetadataHandle, handle,
-						new ServerTransform("transform_to_semantic_v1"), null, Constants.BITEMPORAL_COLLECTION);
+				//vXmlDocMgr.write(pMarkLogicVO.getDocumentURI(), vMetadataHandle, handle, new ServerTransform("transform_to_semantic_v1"), null, Constants.BITEMPORAL_COLLECTION);
+				//vXmlDocMgr.write(pMarkLogicVO.getDocumentURI(), vMetadataHandle, handle, new ServerTransform("transform_to_semantic_v1"), tx);
+				vXmlDocMgr.write(pMarkLogicVO.getDocumentURI(), handle);
 
 				tx.commit();
 
@@ -109,10 +110,10 @@ public class MarkLogicDaoImpl implements IMarkLogicDao {
 	public MarkLogicVO getDocumentByURI(String pDocumentURI, String pCollection) throws TechnicalException {
 
 		final DatabaseClient dbClient = MLDataSource.getConnection();
-		
+
 		final DocumentMetadataHandle vMetadataHandle = new DocumentMetadataHandle();
 		DocumentCollections vCollections = null;
-		
+
 		MarkLogicVO vMarkLogicVO = null;
 		String vDocumentXML = "";
 		final XMLDocumentManager vXmlDocMgr = dbClient.newXMLDocumentManager();
@@ -123,26 +124,27 @@ public class MarkLogicDaoImpl implements IMarkLogicDao {
 			vCollections.addAll(pCollection);
 			vCollections.addAll(Constants.LATEST_COLLECTION);
 			vMetadataHandle.setCollections(vCollections);
-			
+
 			vXmlDocMgr.read(pDocumentURI, vMetadataHandle, stringHandle);
+			//vXmlDocMgr.read(pDocumentURI, stringHandle);
 			vCollections = vMetadataHandle.getCollections();
 			LOGGER.debug("Content of Handler = " + stringHandle.get());
 			vDocumentXML = stringHandle.get();
 			LOGGER.debug("Collections of document = " + vCollections.toString());
-			
+
 			vDocumentXML = vDocumentXML.replaceAll("", "");
 			vDocumentXML = vDocumentXML.replaceAll("", "");
-			
+
 			LOGGER.debug("Translating of XML to POJO ...");
 			vMarkLogicVO = (MarkLogicVO) xstream.fromXML(vDocumentXML);
-			
+
 			if (vMarkLogicVO.getTriples() == null || vMarkLogicVO.getTriples().getListOfTriples() != null) {
 				vMarkLogicVO.setTriples(new TriplesVO());
 			}
 		} catch (Exception e) {
 			throw new TechnicalException(e);
 		}
-		
+
 		return vMarkLogicVO;
 	}
 
