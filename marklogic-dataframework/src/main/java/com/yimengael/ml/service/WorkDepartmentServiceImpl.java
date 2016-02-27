@@ -2,8 +2,6 @@ package com.yimengael.ml.service;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.yimengael.ml.dao.IWorkDepartmentDao;
 import com.yimengael.ml.dao.WorkDepartmentDaoImpl;
 import com.yimengael.ml.exceptions.TechnicalException;
@@ -11,7 +9,6 @@ import com.yimengael.ml.model.TripleVO;
 import com.yimengael.ml.model.TriplesVO;
 import com.yimengael.ml.model.WorkDepartmentVO;
 import com.yimengael.ml.tools.Constants;
-import com.yimengael.ml.tools.Utils;
 
 public class WorkDepartmentServiceImpl implements IWorkDepartmentService {
 
